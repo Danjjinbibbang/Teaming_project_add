@@ -12,6 +12,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.Toast;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 import java.util.ArrayList;
 
@@ -59,6 +62,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    //추가된 소스, ToolBar에 menu.xml을인플레이트함
+    @Override
+    public boolean onCreateOptionsMenu (Menu menu){
+        super.onCreateOptionsMenu(menu);
+        MenuInflater menuInflater = getMenuInflater();
+        menuInflater.inflate(R.menu.top_nav_menu, menu);
+        return true;
+    }
+
+    //추가된 소스, ToolBar에 추가된 항목의 select 이벤트를 처리하는 함수
+    @Override
+    public  boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.navigation_notifications:
+                Toast.makeText(getApplicationContext(), "알림확인 창입니다.", Toast.LENGTH_LONG).show();
+                return true;
+        }
+        return false;
     }
 
     class ProjectAdapter extends BaseAdapter{
