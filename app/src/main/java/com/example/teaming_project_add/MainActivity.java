@@ -56,9 +56,10 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String text = editText.getText().toString().trim();
+                String text = editText.getText().toString();
                 projectAdapter.addItem(new ProjectItem(text,R.drawable.ic_users));
-
+                //아이템추가
+                projectAdapter.notifyDataSetChanged();
             }
         });
 
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu (Menu menu){
         super.onCreateOptionsMenu(menu);
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.top_nav_menu, menu);
+        menuInflater.inflate(R.menu.bell_menu, menu);
         return true;
     }
 
